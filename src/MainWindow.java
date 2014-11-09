@@ -33,6 +33,10 @@ public class MainWindow extends JFrame implements ActionListener{
         JButton destinationFolderButton = new JButton("Select destination folder");
         JButton convertButton = new JButton("Convert");
 
+        sourceFolderButton.addActionListener(this);
+        destinationFolderButton.addActionListener(this);
+        convertButton.addActionListener(this);
+
         ProgressTextArea progressTextArea = new ProgressTextArea();
         progressTextArea.append("Idle...");
 
@@ -56,6 +60,20 @@ public class MainWindow extends JFrame implements ActionListener{
 
         if(event.equals("Exit")) {
             System.exit(0);
+        }
+
+        if(event.equals("Select source folder")) {
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+
+            int returnVal = fileChooser.showOpenDialog(this);
+        }
+
+        if(event.equals("Select destination folder")) {
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+
+            int returnVal = fileChooser.showOpenDialog(this);
         }
     }
 
